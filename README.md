@@ -21,7 +21,9 @@ install Django3
 install pymsql
 
 mysql.server start
+
 mysql -uroot -p
-create database apartment_db_v3
+
+create database apartment_db_v3;
 
 python3 manage.py runserver
