@@ -8,18 +8,18 @@ class RoomModelAdmin(admin.ModelAdmin):
     search_fields = ('room_no',)
     list_filter = ('sex', 'size')
 
-
+# student models in admin.
 class StudentModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'get_sex_display', 'grade', 'profession', 'phone', 'room')
     search_fields = ('id',)
     list_filter = ()
     
-    
+# hygiene.
 class SanitationModelAdmin(admin.ModelAdmin):
     list_display = ('room', 'target_date', 'score')
     list_filter = ()
 
-
+# device models.
 class DeviceModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'get_status_display')
     list_filter = ()
