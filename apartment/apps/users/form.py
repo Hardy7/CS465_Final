@@ -5,13 +5,11 @@ from django import forms
 __version__ = '3.0.3'
 
 """
-@brief  
-@details 
 @author  HanyangXiao JianqiangHao
 @date    2020-03-05 
 """
 
-
+# login form will be used in the html file
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "enter password", "value": "", "required": "required"}),
