@@ -19,6 +19,8 @@ class RoomModel(models.Model):
         return self.location + self.room_no
 
 
+    
+  
 class StudentModel(models.Model):
     name = models.CharField(verbose_name='name',max_length=100)
     sex = models.IntegerField(verbose_name='sex', choices=((0, 'male'), (1, 'female')), default=0)
@@ -80,7 +82,7 @@ class DeviceSentRecordModel(models.Model):
 
 class RuleModel(models.Model):
     """
-    violation record
+    violation record to save information
     """
     rule_type = models.IntegerField(verbose_name="violation_type", choices=((0, 'roommateContradiction'), (1, 'drunk'), (2, 'damagePublicProperty'), (3, 'smoke'), (4, 'other')))
     room = models.ForeignKey(RoomModel, verbose_name="dorm", on_delete=models.CASCADE)
