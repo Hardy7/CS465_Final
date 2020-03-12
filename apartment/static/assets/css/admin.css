@@ -2,11 +2,6 @@
  * admin.css
  */
 
-
-/*
- fixed-layout
-*/
-
 html,
 body {
   height: 100%;
@@ -360,10 +355,6 @@ gallery.html css
   font-size: 1.2rem;
   margin-top: 4px;
 }
-
-/*
- 404.html css
-*/
 
 .page-404 {
   background: #fff;
