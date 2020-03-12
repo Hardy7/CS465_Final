@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="tpl-content-wrapper">
+    <div class="tpl-portlet-components">
+        <div class="portlet-title">
+            <div class="caption font-green bold">
+                <span class="am-icon-code">Violation Record</span>
+            </div>
+        </div>
+
+        <div class="tpl-block">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                           <tr>
+                                <th class="table-id">id</th>
+                                <th class="table-title">room id</th>
+                               <th class="table-type">type</th>
+                                <th class="table-title">person</th>
+                                <th class="table-title">time</th>
+                                <th class="table-title">comment</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in paginator.object_list %}
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.room}}</td>
+                                <td>{{item.get_rule_type_display}}</td>
+                                <td>{{item.person }}</td>
+                                <td>{{item.record_time}}</td>
+                                <td>{{item.remark}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                        <hr>
+                         <div style="width: 80%;margin: auto">
+                    <ul class="pagination pagination-lg">
+                    {% if paginator.has_previous %}
+                        <li>
+                            <a href="{% url 'rule' %}?page={{ paginator.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">previous</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">previous</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for number in paginator.paginator.pager_num_range %}
+                        {% if number == paginator.number %}
+                            <li class="active"><a href="{% url 'rule' %}?page={{ number }}">{{ number }}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'rule' %}?page={{ number }}" >{{ number }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if paginator.has_next %}
+                        <li>
+                            <a href="{% url 'rule' %}?page={{ paginator.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">next</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">next</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="tpl-alert"></div>
+    </div>
+</div>
+{% endblock %}

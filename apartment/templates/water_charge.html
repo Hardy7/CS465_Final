@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="tpl-content-wrapper">
+    <div class="tpl-portlet-components">
+        <div class="portlet-title">
+            <div class="caption font-green bold">
+                <span class="am-icon-code">Water Charge</span>
+            </div>
+        </div>
+
+        <form class="tpl-block" method="post" action="{% url 'water_charge' %}">
+            <div class="am-g">
+                You charge for {{ room.location  }}  {{ room.room_no }}
+                <input type="text" style="width: 50px;height: 30px;color: #2a6496" name="charge">$
+                <input type="text" style="display: none" value="{{ room.id }}" name="room_id">
+                <p><input type="submit" style="color: #2a6496" class="button"><p>
+            </div>
+            {% csrf_token %}
+            </form>
+        </div>
+        <div class="tpl-alert"></div>
+    </div>
+</div>
+{% endblock %}

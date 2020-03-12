@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="tpl-content-wrapper">
+    <div class="tpl-portlet-components">
+        <div class="portlet-title">
+            <div class="caption font-green bold">
+                <span class="am-icon-code">Apartments</span>
+            </div>
+            <div class="tpl-portlet-input tpl-fz-ml">
+                <div class="portlet-input input-small input-inline">
+                    <form action="{% url 'room' %}" method="post" class="sidebar-form">
+                        <div class="am-input-group">
+                            <input type="text" class="am-form-field" placeholder="search..." name="q">
+                            <span class="am-input-group-btn">
+                                <input class="am-btn am-btn-default" type="submit"><span class="am-icon-search"></span></input>
+                            </span>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tpl-block">
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                           <tr>
+                                <th class="table-id">id</th>
+                                <th class="table-title">room id</th>
+                                <th class="table-title">region</th>
+                                <th class="table-type">sex</th>
+                                <th class="table-title">type</th>
+                                <th class="table-date am-hide-sm-only">remaining electric ($)</th>
+                                <th class="table-date am-hide-sm-only">remaining water ($)</th>
+                                <th class="table-title">operation</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in paginator.object_list %}
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.room_no}}</td>
+                                <td>{{item.location}}</td>
+                                <td>{{item.get_sex_display }}</td>
+                                <td>{{item.get_size_display}}</td>
+                                <td>{{item.electric_charge}}</td>
+                                <td>{{item.water_charge}}</td>
+                                <td><a href="{% url 'electric_charge' %}?room_id={{item.id}}">charge electricity</a>
+                                    /<a href="{% url 'water_charge' %}?room_id={{item.id}}">charge water</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                        <hr>
+                         <div style="width: 80%;margin: auto">
+                    <ul class="pagination pagination-lg">
+                    {% if paginator.has_previous %}
+                        <li>
+                            <a href="{% url 'room' %}?page={{ paginator.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">previous</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">previous</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for number in paginator.paginator.pager_num_range %}
+                        {% if number == paginator.number %}
+                            <li class="active"><a href="{% url 'room' %}?page={{ number }}">{{ number }}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'room' %}?page={{ number }}" >{{ number }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if paginator.has_next %}
+                        <li>
+                            <a href="{% url 'room' %}?page={{ paginator.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">next</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">next</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="tpl-alert"></div>
+    </div>
+</div>
+{% endblock %}
