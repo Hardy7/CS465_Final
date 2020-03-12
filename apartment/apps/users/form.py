@@ -16,6 +16,7 @@ class LoginForm(forms.Form):
                                min_length=5, max_length=20, error_messages={"required": "invalid password"})
 
 
+# register form will be used in the html file
 class RegisterForm(forms.Form):
     username = forms.CharField(min_length = 3, max_length=20, error_messages={"required": "invalid password"})
     email = forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "enter email", "value": ""}))
