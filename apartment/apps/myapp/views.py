@@ -6,9 +6,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from .custom_paginator import CustomPaginator
 from .models import *
-# Create your views here.
 
 
+# if user doesn't register, it always display login page.
 class LoginRequiredMixin(object):
 
     @classmethod
@@ -83,7 +83,8 @@ class RoomListView(LoginRequiredMixin, View):
             paginator = paginator.page(paginator.num_pages)
         return render(request, 'room.html', {"paginator": paginator})
 
-
+    
+#electric charge.
 class ElectricChargeView(LoginRequiredMixin, View):
     def get(self, request):
         room_id = request.GET.get("room_id")
@@ -113,7 +114,7 @@ class WaterChargeView(LoginRequiredMixin, View):
         room.save()
         return HttpResponseRedirect(reverse("room"))
 
-
+#hygiene.
 class SanitationListView(LoginRequiredMixin, View):
     def get(self, request):
         room_list = SanitationModel.objects.all()
@@ -144,7 +145,7 @@ class SanitationListView(LoginRequiredMixin, View):
             paginator = paginator.page(paginator.num_pages)
         return render(request, 'sanitation.html', {"paginator": paginator})
 
-
+# device record.
 class DeviceListView(LoginRequiredMixin, View):
     def get(self, request):
         room_list = DeviceModel.objects.all()
@@ -193,7 +194,7 @@ class DeviceSentRecordListView(LoginRequiredMixin, View):
             paginator = paginator.page(paginator.num_pages)
         return render(request, 'device_record.html', {"paginator": paginator, "device": device})
 
-
+#violation record.
 class RuleListView(LoginRequiredMixin, View):
     def get(self, request):
         room_list = RuleModel.objects.all()
