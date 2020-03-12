@@ -10,9 +10,18 @@ Features:
  - Device Record (check record)
  - Violation Record
  
- Tech:
+Tech:
   - Django 3
   - MySQL
   - AmazeUI
   - Bootstrap
 
+How to run:
+install Django3
+install pymsql
+
+mysql.server start
+mysql -uroot -p
+create database apartment_db_v3
+
+python3 manage.py runserver
