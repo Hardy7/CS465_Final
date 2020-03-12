@@ -148,13 +148,9 @@ var pageData = {
         };
         echartsA.setOption(option);
     },
-    // ===============================================
-    // 图表页
-    // ===============================================
+
     'chart': function chartData() {
-        // ==========================
-        // 百度图表A http://echarts.baidu.com/
-        // ==========================
+
 
         var echartsC = echarts.init(document.getElementById('tpl-echarts-C'));
 
