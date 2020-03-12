@@ -14,7 +14,8 @@ from django.contrib.auth.hashers import make_password
 class CustomBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
-
+            username = request.POST.get("username", "")
+            password = request.POST.get("password", "")
             user = UserProfile.objects.get(Q(username=username) | Q(email=username))
             if user.check_password(password):
                 return user
