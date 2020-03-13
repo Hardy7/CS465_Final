@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
-__version__ = '1.0.0.0'
+__version__ = '3.0.3'
 """
-@brief  :   简介
-@details:   详细信息
-@author :   zhphuang
-@date   :   2020-02-18
+@author :   HanyangXiao & JianqiangHao
+@date   :   2020-03-13
 """
