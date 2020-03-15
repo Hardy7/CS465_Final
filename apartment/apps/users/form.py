@@ -1,12 +1,13 @@
-#!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 from django import forms
 
 __version__ = '3.0.3'
 
+
 """
 @author  HanyangXiao JianqiangHao
-@date    2020-03-05 
+@date    2020-03-06 
 """
 
 # login form will be used in the html file
