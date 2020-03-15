@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password
 # Create your models here.
 
+
 # userprofile model
 class UserProfile(AbstractUser):
     mobile = models.CharField(max_length=11, null=True, blank=True)
@@ -17,6 +18,7 @@ class UserProfile(AbstractUser):
             self.password = make_password(self.password)
         return super(UserProfile, self).save(*args, **kwargs)
 
+    
     def __unicode__(self):
         return self.username
 
