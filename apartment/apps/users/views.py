@@ -46,9 +46,7 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse("users:login"))
-
-
-    
+  
 class RegisterView(View):
 
     def get(self, request):
