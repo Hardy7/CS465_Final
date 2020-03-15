@@ -5,7 +5,9 @@ from django.conf.urls import url
 from django.urls import path
 from .views import LoginView, RegisterView, LogoutView
 
+
 app_name = 'users'
+
 
 urlpatterns = [
     path(r'login/', LoginView.as_view(), name="login"),
