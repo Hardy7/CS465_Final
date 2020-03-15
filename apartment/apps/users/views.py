@@ -10,6 +10,7 @@ from .form import LoginForm, RegisterForm
 from django.contrib.auth.hashers import make_password
 # Create your views here.
 
+
 class CustomBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
