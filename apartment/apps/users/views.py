@@ -39,7 +39,6 @@ class LoginView(View):
         else:
             return render(request, "users/login.html", {"login_form": login_form})
 
-
 class LogoutView(View):
     """
     logout
